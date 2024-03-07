@@ -87,9 +87,3 @@ function deleteTodo(id){
     todoList.splice(targetIndex, 1)
     renderList(todoList)
 }
-
-
-// window.addEventListener("load", function () {
-//   console.log(document);
-//   console.log(document.getElementById("add-btn"));
-// });
