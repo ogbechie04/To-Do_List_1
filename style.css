@@ -54,7 +54,7 @@ body {
   background-image: linear-gradient(VAR(--DARK-PURPLE), VAR(--LIGHTER-PURPLE));
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100%;
+  min-height: 100vh;
   color: #fff;
   display: flex;
   flex-direction: column;
