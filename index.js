@@ -34,11 +34,14 @@ function renderList(list) {
 
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
 
-    checkboxes.forEach(checkbox => {
+    checkboxes.forEach((checkbox, index) => {
     checkbox.addEventListener('change', function() {
         const id = parseInt(this.id.replace('item', ''));
         const todoItem = todoList.find(item => item.id === id);
         todoItem.completed = this.checked;
+
+        todoList.splice(index, 1)
+        todoList.push(todoItem)
         renderList(todoList);
     });
 });
@@ -63,9 +66,12 @@ function editTodo(id){
     const editBTN = document.querySelector(`#edit-${id}`)
     const targetItem = todoList.find(item => item.id === id)
     const taskLabel = document.querySelector(`label[for=item${id}]`)
-    taskLabel.contentEditable = true
+    if(targetItem.completed === false) {
+        taskLabel.contentEditable = true
     taskLabel.focus()
     editBTN.textContent = "Save"
+    }
+
 
     taskLabel.addEventListener("blur", function() {
         targetItem.name = taskLabel.textContent
